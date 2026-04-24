@@ -1,0 +1,13 @@
+# CODEOWNERS — 约束所有改动需仓库所有者 review
+# 语法：<pattern> <owner...>
+
+# 全局默认：所有文件都由仓库所有者审批
+*       @WeiXiaochong
+
+# 关键资产：HTML / CSS / JS 改动必须你亲自 review
+/index.html              @WeiXiaochong
+/assets/css/**           @WeiXiaochong
+/assets/js/**            @WeiXiaochong
+/README.md               @WeiXiaochong
+
+# 请将 @WeiXiaochong 替换为你的真实 GitHub 用户名
