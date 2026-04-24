@@ -2,12 +2,12 @@
 # 语法：<pattern> <owner...>
 
 # 全局默认：所有文件都由仓库所有者审批
-*       @WeiXiaochong
+*       @hanshan8836-del
 
 # 关键资产：HTML / CSS / JS 改动必须你亲自 review
-/index.html              @WeiXiaochong
-/assets/css/**           @WeiXiaochong
-/assets/js/**            @WeiXiaochong
-/README.md               @WeiXiaochong
+/index.html              @hanshan8836-del
+/assets/css/**           @hanshan8836-del
+/assets/js/**            @hanshan8836-del
+/README.md               @hanshan8836-del
 
-# 请将 @WeiXiaochong 替换为你的真实 GitHub 用户名
+# 请将 @hanshan8836-del 替换为你的真实 GitHub 用户名
