@@ -53,21 +53,23 @@ button { cursor:pointer; background:none; border:none; font-family:inherit; colo
 
 .container { width:min(1280px, 92vw); margin:0 auto; }
 
-/* ---------- Portfolio Banner ---------- */
+/* ---------- Portfolio Banner (fixed top-most) ---------- */
 .portfolio-banner {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1001;
-  background: linear-gradient(90deg, var(--navy-900), var(--navy));
-  border-bottom: 1px solid rgba(196,154,44,.28);
-  padding: 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 38px;
+  z-index: 1002;
+  background: linear-gradient(90deg, #061123 0%, var(--navy) 50%, #061123 100%);
+  border-bottom: 1px solid rgba(196,154,44,.3);
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,.18);
 }
 .portfolio-banner::before {
   content: "";
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(196,154,44,.1), transparent);
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(196,154,44,.08), transparent);
   background-size: 200% 100%;
-  animation: shimmer 6s linear infinite;
+  animation: shimmer 8s linear infinite;
   pointer-events: none;
 }
 @keyframes shimmer {
@@ -77,12 +79,14 @@ button { cursor:pointer; background:none; border:none; font-family:inherit; colo
 .portfolio-banner__inner {
   position: relative; z-index: 1;
   width: min(1400px, 94vw);
+  height: 100%;
   margin: 0 auto;
-  padding: 8px 0;
+  padding: 0 4px;
   display: flex; align-items: center; gap: 14px;
   font-family: var(--sans);
-  color: rgba(255,255,255,.85);
+  color: rgba(255,255,255,.88);
   font-size: 12px;
+  white-space: nowrap;
 }
 .portfolio-banner__badge {
   font-family: var(--eng); font-size: 10px; font-weight: 800;
@@ -92,31 +96,38 @@ button { cursor:pointer; background:none; border:none; font-family:inherit; colo
   color: var(--navy);
   border-radius: 2px;
   flex-shrink: 0;
+  line-height: 1;
 }
-.portfolio-banner__text { flex: 1; letter-spacing: .3px; }
+.portfolio-banner__text {
+  flex: 1; min-width: 0;
+  letter-spacing: .3px;
+  overflow: hidden; text-overflow: ellipsis;
+}
 .portfolio-banner__text strong { color: var(--gold-400); font-weight: 700; }
 .portfolio-banner__link {
-  color: var(--gold-400); font-weight: 600; font-size: 12px;
+  color: var(--gold-400); font-weight: 600; font-size: 11.5px;
   padding: 4px 12px;
   border: 1px solid rgba(196,154,44,.4);
   border-radius: 3px;
   transition: background .2s, color .2s;
   flex-shrink: 0;
+  line-height: 1;
 }
 .portfolio-banner__link:hover {
   background: var(--gold);
   color: var(--navy);
 }
 
-/* push everything down */
-.nav { top: 36px; }
-.hero { padding-top: 130px; }
+/* Layout offset — nav sits below banner, progress bar sits at very bottom of banner */
+.nav { top: 38px; }
+.hero { padding-top: 140px; }
 
-/* ---------- Scroll Progress ---------- */
+/* ---------- Scroll Progress (sits at the TOP of the nav bar, fully visible) ---------- */
 .scroll-progress {
-  position: fixed; top:0; left:0; right:0;
-  height: 3px; background: transparent;
-  z-index: 1000;
+  position: fixed; top: 38px; left: 0; right: 0;
+  height: 2px; background: transparent;
+  z-index: 1003;
+  pointer-events: none;
 }
 .scroll-progress::after {
   content: ""; display:block; height:100%;
@@ -2808,12 +2819,13 @@ button { cursor:pointer; background:none; border:none; font-family:inherit; colo
 }
 
 @media (max-width: 640px) {
-  .portfolio-banner__inner { padding: 6px 0; gap: 8px; }
-  .portfolio-banner__badge { font-size: 9px; padding: 2px 7px; letter-spacing: 2px; }
-  .portfolio-banner__text { font-size: 10px; line-height: 1.4; }
-  .portfolio-banner__text strong { display: inline; }
-  .nav { top: 28px; }
-  .hero { padding: 90px 0 40px; }
+  .portfolio-banner { height: 32px; }
+  .portfolio-banner__inner { gap: 8px; padding: 0 2px; }
+  .portfolio-banner__badge { font-size: 8.5px; padding: 2px 6px; letter-spacing: 1.5px; }
+  .portfolio-banner__text { font-size: 10.5px; }
+  .nav { top: 32px; }
+  .scroll-progress { top: 32px; }
+  .hero { padding: 120px 0 40px; }
   .hero__stats { grid-template-columns: 1fr 1fr; }
   .kpi-row, .chart-duo, .biz-grid, .proj-grid, .research-grid, .hr-dash__grid, .orgiq-grid, .esg-grid, .culture-grid, .pillars, .footer__cols, .footer__grid { grid-template-columns: 1fr; }
   .proj--feature, .research--feature, .hr-card--wide { grid-column: span 1; }
